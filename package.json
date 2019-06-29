@@ -3,15 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "connected-react-router": "^6.4.0",
+    "jest": "^24.8.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
+    "react-redux": "^7.1.0",
+    "react-router": "^5.0.1",
+    "react-scripts": "3.0.1",
+    "reactstrap": "^8.0.0",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "webpack-dev-server --module-bind png=url-loader?mimetype=image/png --progress --colors --watch",
+    "babel": "babel",
+    "webpack": "webpack",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -27,5 +38,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.0.0",
+    "extract-text-webpack-plugin": "^4.0.0-alpha.0",
+    "uglifyjs-webpack-plugin": "^2.1.3",
+    "webpack": "^4.35.0",
+    "webpack-bundle-tracker": "^0.4.2-beta",
+    "webpack-cli": "^3.3.5",
+    "webpack-dev-server": "^3.7.2",
+    "webpack-livereload-plugin": "^2.2.0"
   }
 }
