@@ -7,6 +7,7 @@ import NotFound from './notFound'
 export function getRoutes(store) {
   
   return (
+    //<Router>
     <Switch>
         <Route path="/" component={App} />
 
@@ -14,5 +15,6 @@ export function getRoutes(store) {
             <Route path="*" component={NotFound} />
         </Route>
     </Switch>
+    //</Router>
   );
 }

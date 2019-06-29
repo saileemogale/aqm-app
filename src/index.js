@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 import { getRoutes } from './routes';
-import configureStore, { history } from './stores/configureStore.js';
+import configureStore from './stores/configureStore.js'
+import { history } from "./stores/history";
 
 import './index.css';
 //import * as serviceWorker from './serviceWorker';
@@ -31,6 +32,6 @@ class AppProvider extends Component {
 
 ReactDOM.render(
     <AppProvider/>
-    , document.getElementById('container'));
+    , document.getElementById('root'));
 
 //serviceWorker.unregister();
