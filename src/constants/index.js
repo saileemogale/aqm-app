@@ -1,0 +1,1 @@
+export const UPDATE_STOCK_DATA='UPDATE_STOCK_DATA'

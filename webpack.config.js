@@ -11,6 +11,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 const HtmlWebpackRootPlugin = require('html-webpack-root-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 require('dotenv').config()
 var isProd = (process.env.NODE_ENV === 'production')
@@ -24,7 +25,6 @@ function getPlugins() {
       filename: path.resolve('./src/bundles/index.html')
     }),
     new HtmlWebpackRootPlugin(),
-    new ExtractTextPlugin("[name]-[hash].css"),
     new BundleTracker({filename: './webpack-stats.json'}),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
@@ -35,6 +35,12 @@ function getPlugins() {
       cssProcessor: require('cssnano'),
       cssProcessorOptions: { discardComments: { removeAll: true } },
       canPrint: true
+    }),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: '[name].css',
+      chunkFilename: '[id].css',
     })
   ]
   if(isProd){
@@ -85,9 +91,19 @@ module.exports = {
         /*
         your other rules for JavaScript transpiling go in here
         */
-        { // regular css files
+        {
           test: /\.css$/,
-          use: extractCSS.extract([ 'css-loader'])
+          use: [
+            {
+              loader: MiniCssExtractPlugin.loader,
+              options: {
+                // you can specify a publicPath here
+                // by default it uses publicPath in webpackOptions.output
+                publicPath: path.join(__dirname, "src/bundles/")
+              },
+            },
+            'css-loader',
+          ],
         }
       ]
 

@@ -7,6 +7,7 @@ import configureStore from './stores/configureStore.js'
 import { history } from "./stores/history";
 
 import './index.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.css';
 //import * as serviceWorker from './serviceWorker';
 
 const store = configureStore()
