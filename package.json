@@ -5,19 +5,21 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "connected-react-router": "^6.4.0",
+    "html-webpack-plugin": "^3.2.0",
     "jest": "^24.8.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
     "react-router": "^5.0.1",
     "react-scripts": "3.0.1",
+    "react-websocket": "^2.0.1",
     "reactstrap": "^8.0.0",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "webpack-dev-server --module-bind png=url-loader?mimetype=image/png --progress --colors --watch",
+    "start": "webpack-dev-server --hot --inline",
     "babel": "babel",
     "webpack": "webpack",
     "test": "jest --coverage",

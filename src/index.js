@@ -6,13 +6,14 @@ import { getRoutes } from './routes';
 import configureStore, { history } from './stores/configureStore.js';
 
 import './index.css';
-import * as serviceWorker from './serviceWorker';
+//import * as serviceWorker from './serviceWorker';
 
 const store = configureStore()
 
 class AppProvider extends Component {
 
   constructor() {
+      console.log("In app prpvider")
     super()
   }
 
@@ -32,4 +33,4 @@ ReactDOM.render(
     <AppProvider/>
     , document.getElementById('container'));
 
-serviceWorker.unregister();
+//serviceWorker.unregister();

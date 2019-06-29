@@ -9,6 +9,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 require('dotenv').config()
 var isProd = (process.env.NODE_ENV === 'production')
@@ -17,6 +18,9 @@ const extractCSS = new ExtractTextPlugin("[name]-[hash].css")
 function getPlugins() {
   var plugins = []
   plugins = [
+    new HtmlWebpackPlugin({
+      chunks: ['main']
+    }),
     new ExtractTextPlugin("[name]-[hash].css"),
     new BundleTracker({filename: './webpack-stats.json'}),
     new webpack.HotModuleReplacementPlugin(),
@@ -86,8 +90,10 @@ module.exports = {
 
     },
     devServer: {
-        contentBase: path.join(__dirname, "./src/index"),
+        contentBase: path.join(__dirname, "src/bundles/"),
+        publicPath: '/',
         compress: true,
-        port: 9000
+        port: 9000,
+        historyApiFallback: true
     }
 }
