@@ -18,9 +18,14 @@ class StockDataComponent extends React.Component {
     let parsedData = JSON.parse(data)
     let that = this
     let stock = this.state.stockData
-    parsedData.map(function([name, price]){
-        stock[name] = {price: price, date: moment().utc().format('MM/DD/YYYY HH:mm:ss')}
-        
+    parsedData.map(function([name, price]){        
+        if(stock[name] && stock[name]['price'] > price){
+            stock[name] = {price: price, date: moment().format('LTS'), style: 'red'}
+        } else if(stock[name] && stock[name]['price'] < price) {
+            stock[name] = {price: price, date: moment().format('LTS'), style: 'green'}
+        } else {
+            stock[name] = {price: price, date: moment().format('LTS'), style: 'white'}
+        }
     })
     this.setState({stockData: stock})
     this.props.updateStockData(this.state.stockData)
@@ -43,7 +48,7 @@ class StockDataComponent extends React.Component {
                         
                         Object.keys(this.state.stockData).map(function(key){
                             return(
-                                <tr key={key}>
+                                <tr key={key} className={`${that.state.stockData[key]['style']}-row`}>
                                     <td>{key}</td>
                                     <td>{that.state.stockData[key]['price']}</td>
                                     <td>{that.state.stockData[key]['date']}</td>

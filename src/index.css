@@ -1,3 +1,9 @@
-.badge {
-  border: 1px solid #000;
+.red-row {
+  background-color: red;
+}
+.green-row {
+  background-color: green;
+}
+.white-row {
+  background-color: white;
 }
