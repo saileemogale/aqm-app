@@ -17,5 +17,9 @@
 ## Run tests locally
 - npm test
 
-## Code coverage
+## APP URL
+- http://stocks-data-app.herokuapp.com/
+
+## This app also supports SSL but as websocket needs to be configured in SSL first
+- https://stocks-data-app.herokuapp.com/
 
