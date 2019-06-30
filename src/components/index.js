@@ -58,7 +58,7 @@ class StockDataComponent extends React.Component {
                     }
                 </tbody>
       </Table>
-      <Websocket url='wss://stocks.mnet.website'
+      <Websocket url='ws://stocks.mnet.website'
             onMessage={this.handleData.bind(this)}/>
       </div>
     );
