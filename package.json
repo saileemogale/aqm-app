@@ -27,6 +27,7 @@
   "scripts": {
     "start": "node server.js",
     "heroku-postbuild": "webpack --module-bind png=url-loader?mimetype=image/png --progress --colors",
+    "build": "webpack --module-bind png=url-loader?mimetype=image/png --progress --colors",
     "dev": "webpack-dev-server && webpack --module-bind png=url-loader?mimetype=image/png --progress --colors  --watch",
     "babel": "babel",
     "webpack": "webpack",
