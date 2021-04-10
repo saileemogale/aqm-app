@@ -12,14 +12,14 @@
 - https://github.com/saileemogale/aqm-app
 
 ## Link for travis CI
-- https://travis-ci.org/saileemogale/aqm-app
+- https://travis-ci.org/saileemogale/aqm-data
 
 ## Run tests locally
 - npm test
 
 ## APP URL
-- http://aqm-app.herokuapp.com/
+- http://aqm-data.herokuapp.com/
 
 ## This app also supports SSL but as websocket needs to be configured in SSL first
-- https://aqm-data-app.herokuapp.com/
+- https://aqm-data.herokuapp.com/
 
