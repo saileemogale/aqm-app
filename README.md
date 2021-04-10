@@ -12,7 +12,7 @@
 - https://github.com/saileemogale/aqm-app
 
 ## Link for travis CI
-- https://travis-ci.org/saileemogale/aqm-data
+- https://www.travis-ci.com/github/saileemogale/aqm-app
 
 ## Run tests locally
 - npm test
