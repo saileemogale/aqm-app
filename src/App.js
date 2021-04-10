@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Container from '../src/containers/index'
-import StockDataComponent from '../src/components/index'
+import AirQualityMonitoringComponent from '../src/components/index'
 
 class App extends React.Component {
  
@@ -14,7 +14,7 @@ class App extends React.Component {
   render() {
     return (
       <Container>
-        <StockDataComponent/>
+        <AirQualityMonitoringComponent/>
       </Container>
     );
   }

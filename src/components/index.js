@@ -4,12 +4,12 @@ import moment from 'moment';
 import { Table } from 'reactstrap';
 
 
-class StockDataComponent extends React.Component {
+class AirQualityMonitoringComponent extends React.Component {
  
   constructor(props) {
     super(props);
     this.state = {
-      stockData: this.props.stockData ? this.props.stockData : {}
+      data: this.props.data ? this.props.data : {}
     };
   }
 
@@ -17,18 +17,24 @@ class StockDataComponent extends React.Component {
     //console.log(JSON.parse(data))
     let parsedData = JSON.parse(data)
     let that = this
-    let stock = this.state.stockData
-    parsedData.map(function([name, price]){        
-        if(stock[name] && stock[name]['price'] > price){
-            stock[name] = {price: price, date: moment().format('LTS'), style: 'red'}
-        } else if(stock[name] && stock[name]['price'] < price) {
-            stock[name] = {price: price, date: moment().format('LTS'), style: 'green'}
+    let aqiData = this.state.data
+    parsedData.map(function(record){       
+        if(aqiData[record['city']] && aqiData[record['city']]['aqi'] > 400){
+          aqiData[record['city']] = {api: record['aqi'], date: moment().format('LTS'), style: 'dark-red'}
+        } else if(aqiData[record['city']] && aqiData[record['city']]['aqi'] > 300 && aqiData[record['city']]['aqi'] <= 400) {
+          aqiData[record['city']] = {aqi: record['aqi'], date: moment().format('LTS'), style: 'red'}
+        } else if(aqiData[record['city']] && aqiData[record['city']]['aqi'] > 200 && aqiData[record['city']]['aqi'] <= 300) {
+          aqiData[record['city']] = {aqi: record['aqi'], date: moment().format('LTS'), style: 'orange'}
+        } else if(aqiData[record['city']] && aqiData[record['city']]['aqi'] > 100 && aqiData[record['city']]['aqi'] <= 200) {
+          aqiData[record['city']] = {aqi: record['aqi'], date: moment().format('LTS'), style: 'yellow'}
+        } else if(aqiData[record['city']] && aqiData[record['city']]['aqi'] > 50 && aqiData[record['city']]['aqi'] <= 100) {
+          aqiData[record['city']] = {aqi: record['aqi'], date: moment().format('LTS'), style: 'light-green'}
         } else {
-            stock[name] = {price: price, date: moment().format('LTS'), style: 'white'}
+          aqiData[record['city']] = {aqi: record['aqi'], date: moment().format('LTS'), style: 'green'}
         }
     })
-    this.setState({stockData: stock})
-    this.props.updateStockData(this.state.stockData)
+    this.setState({data: aqiData})
+    this.props.updateAqiData(this.state.data)
   }
 
   render() {
@@ -38,31 +44,31 @@ class StockDataComponent extends React.Component {
         <Table>
                 <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Date</th>
+                    <th>City</th>
+                    <th>Current AQI</th>
+                    <th>Last Updated</th>
                 </tr>
                 </thead>
                 <tbody>
                     {
                         
-                        Object.keys(this.state.stockData).map(function(key){
+                        Object.keys(this.state.data).map(function(key){
                             return(
-                                <tr key={key} className={`${that.state.stockData[key]['style']}-row`}>
+                                <tr key={key} className={`${that.state.data[key]['style']}-row`}>
                                     <td>{key}</td>
-                                    <td>{that.state.stockData[key]['price']}</td>
-                                    <td>{that.state.stockData[key]['date']}</td>
+                                    <td>{that.state.data[key]['aqi']}</td>
+                                    <td>{that.state.data[key]['date']}</td>
                                 </tr>
                             )
                         })
                     }
                 </tbody>
       </Table>
-      <Websocket url='ws://stocks.mnet.website'
+      <Websocket url='ws://city-ws.herokuapp.com'
             onMessage={this.handleData.bind(this)}/>
       </div>
     );
   }
 }
 
-export default StockDataComponent;
+export default AirQualityMonitoringComponent;

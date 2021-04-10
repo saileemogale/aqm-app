@@ -1,6 +1,6 @@
 import React from 'react';
 import configureStore from 'redux-mock-store'
-import StockDataComponent from '../components';
+import AirQualityMonitoringComponent from '../components';
 import { configure, shallow } from 'enzyme';
 import Adapter from "enzyme-adapter-react-16";
 import { Provider } from "react-redux";
@@ -10,8 +10,8 @@ import { expect } from 'chai';
 configure({ adapter: new Adapter() });
  
 const initialState = {
-    stockData: {
-        'aks': {price: 42.76, date: '10:39:15 AM', style: 'red'}
+    data: {
+        'mumbai': {aqi: 42.76, date: '10:39:15 AM', style: 'green'}
     }
 }; 
 const mockStore = configureStore();
@@ -21,13 +21,13 @@ let store;
 beforeEach(() => {
     store = mockStore(initialState)
     wrapper = shallow(
-        <StockDataComponent stockData={initialState.stockData}/>  
+        <AirQualityMonitoringComponent data={initialState.data}/>  
     )
 })
 
-describe('stockData', () => {
+describe('data', () => {
     it('match class on screen', () => {
-        expect(wrapper.find('.red-row')).to.have.length(1);
+        expect(wrapper.find('.green-row')).to.have.length(1);
     });
 
 })

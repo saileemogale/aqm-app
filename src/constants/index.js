@@ -1,1 +1,1 @@
-export const UPDATE_STOCK_DATA='UPDATE_STOCK_DATA'
+export const UPDATE_DATA='UPDATE_DATA'

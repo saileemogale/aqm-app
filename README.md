@@ -1,4 +1,4 @@
-#Stocks Data App
+#Air Quality Monitoring App
 
 ## Run application on local environment
 - npm run-scripts build
@@ -9,17 +9,17 @@
 
 ## Links for github repository
 
-- https://github.com/saileemogale/stocks-app
+- https://github.com/saileemogale/aqm-app
 
 ## Link for travis CI
-- https://travis-ci.org/saileemogale/stocks-app
+- https://travis-ci.org/saileemogale/aqm-app
 
 ## Run tests locally
 - npm test
 
 ## APP URL
-- http://stocks-data-app.herokuapp.com/
+- http://aqm-app.herokuapp.com/
 
 ## This app also supports SSL but as websocket needs to be configured in SSL first
-- https://stocks-data-app.herokuapp.com/
+- https://aqm-data-app.herokuapp.com/
 

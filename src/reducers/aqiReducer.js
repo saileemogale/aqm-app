@@ -1,15 +1,15 @@
 import { createReducer } from '../utils'
-import { UPDATE_STOCK_DATA } from '../constants'
+import { UPDATE_DATA } from '../constants'
 
 const initialState = {
-	stockData: {}
+	data: {}
 }
 
 export default createReducer(initialState, {
-	[UPDATE_STOCK_DATA]: (state, payload) => {
+	[UPDATE_DATA]: (state, payload) => {
 		return {
 			...state,
-			stockData: payload
+			data: payload
 		}
 	}
 })

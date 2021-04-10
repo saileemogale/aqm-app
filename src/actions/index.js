@@ -1,8 +1,8 @@
-import { UPDATE_STOCK_DATA } from '../constants/index'
+import { UPDATE_DATA } from '../constants/index'
 
-export function updateStockData(payload) {  
+export function updateAqiData(payload) {  
     return {
-        type: UPDATE_STOCK_DATA,
+        type: UPDATE_DATA,
         payload: payload
     }
 }

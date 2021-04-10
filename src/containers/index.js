@@ -1,17 +1,17 @@
-import StockDataComponent from '../components'
+import AirQualityMonitoringComponent from '../components'
 import { connect } from 'react-redux'
-import { updateStockData } from '../actions'
+import { updateAqiData } from '../actions'
 
 var mapStateToProps = function(state, ownProps){
     return {
-        stockData: state.stockData
+        data: state.data
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        updateStockData: (payload) => dispatch(updateStockData(payload)),
+        updateAqiData: (payload) => dispatch(updateAqiData(payload)),
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(StockDataComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(AirQualityMonitoringComponent)
